@@ -22,4 +22,11 @@ public class GameManager : MonoBehaviour
             door.SetActive(false);
         }
     }
+    
+    /* In level 2:
+     * if enemyCount < 0:
+     * key spawns
+     * 
+     * enemyCount = getArrayOfGameObjectsTags("Enemy")
+     */
 }
