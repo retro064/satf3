@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool keyCollected = false;
+    public static int keyThreshold = 3;
     private GameObject door;
 
     // Start is called before the first frame update

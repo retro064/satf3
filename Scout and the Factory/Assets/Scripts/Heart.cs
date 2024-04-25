@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Heart : MonoBehaviour
 {
+    public float speed = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class Heart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, speed * Time.deltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)
