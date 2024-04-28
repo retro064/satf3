@@ -67,7 +67,8 @@ public class PlayerMovement : MonoBehaviour
             jumpNum--;
         }
 
-        
+        velocity.y += GRAVITY * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
 
     void FixedUpdate()
@@ -90,8 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
         grounded = Physics.CheckSphere(groundCheck.position, distanceRadius, groundMask);
 
-        velocity.y += GRAVITY * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        
     }
 
     private void OnApplicationFocus(bool focus)

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointPath: {fileID: 0}
   speed: 5
+  autoStart: 1
 --- !u!114 &6006979889209108283
 MonoBehaviour:
   m_ObjectHideFlags: 0

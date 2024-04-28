@@ -172,7 +172,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 2.5
+  m_Speed: 7
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -199,7 +199,7 @@ MonoBehaviour:
   agent: {fileID: 1536439195455103543}
   range: 15
   walkSpeed: 2.5
-  walkable: 0
+  walkable: 1
 --- !u!114 &8932707037529590762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,4 +213,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 20
-  runSpeed: 15
+  runSpeed: 5

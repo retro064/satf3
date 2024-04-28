@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = curHealth.ToString() + "x";
+        healthText.text = "Health: " + curHealth.ToString() + "x";
 
         if (curHealth > maxHealth)
         {

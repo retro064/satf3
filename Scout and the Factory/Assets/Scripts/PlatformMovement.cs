@@ -12,6 +12,8 @@ public class PlatformMovement : MonoBehaviour
     private Transform targetWaypoint;
     private float timeToWaypoint;
     private float elapsedTime;
+    [SerializeField]
+    private bool autoStart = true;
 
     void Start()
     {
@@ -20,14 +22,18 @@ public class PlatformMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        elapsedTime += Time.deltaTime;
-        float elapsedPercentage = elapsedTime / timeToWaypoint;
-        elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-        transform.SetPositionAndRotation(Vector3.Slerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage), Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
-        if (elapsedPercentage >= 1)
+        if (autoStart)
         {
-            TargetNextWayPoint();
+            elapsedTime += Time.deltaTime;
+            float elapsedPercentage = elapsedTime / timeToWaypoint;
+            elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+            transform.SetPositionAndRotation(Vector3.Slerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage), Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
+            if (elapsedPercentage >= 1)
+            {
+                TargetNextWayPoint();
+            }
         }
+        
     }
 
     private void TargetNextWayPoint()
@@ -39,5 +45,14 @@ public class PlatformMovement : MonoBehaviour
         elapsedTime = 0;
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / speed; 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // platforms begins to move
+            autoStart = true;
+        }
     }
 }
