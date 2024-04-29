@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Vector3 direction;
+    public Animator anim;
 
     void Start()
     {
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         groundCheck = GameObject.Find("GroundCheck").GetComponent<Transform>();
         groundMask = LayerMask.GetMask("Ground");
-        
         jumpNum = jumpNumMax;
         /*
         camera orbits:
@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += GRAVITY * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        anim.SetFloat("speed", direction.magnitude);
     }
 
     void FixedUpdate()
