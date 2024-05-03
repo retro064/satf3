@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     private int maxHealth = 3;
-    private int curHealth;
+    public int curHealth;
     public TextMeshProUGUI healthText;
 
     // Start is called before the first frame update
