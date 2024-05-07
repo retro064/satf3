@@ -61,10 +61,12 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * GRAVITY);
             jumpNum--;
+            anim.SetBool("jump", true); // play jump anim
         } else if (Input.GetButtonDown("Jump") && jumpNum >= 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2 * GRAVITY);
             jumpNum--;
+            anim.SetBool("jump", true);
         }
 
         velocity.y += GRAVITY * Time.deltaTime;
@@ -82,12 +84,14 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(speed * Time.deltaTime * moveDir.normalized);
+            // anim.SetBool("jump", false);
         }
 
-        if (grounded && velocity.y < 0)
+        if (grounded && velocity.y <= 0)
         {
             velocity.y = -2.0f;
             jumpNum = jumpNumMax;
+            anim.SetBool("jump", false);
         }
 
         grounded = Physics.CheckSphere(groundCheck.position, distanceRadius, groundMask);

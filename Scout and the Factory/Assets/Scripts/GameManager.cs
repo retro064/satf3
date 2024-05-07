@@ -33,6 +33,16 @@ public class GameManager : MonoBehaviour
         {
             door.SetActive(false);
         }
+
+        // skip scenes
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // next scene
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1); // previous scene
+        }
     }
     
     /* In level 2:
