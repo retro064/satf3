@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip heartCollected;
+    public AudioClip keyCollected;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,16 @@ public class PlayerCollision : MonoBehaviour
         if (other.CompareTag("MovingPlatform"))
         {
             transform.SetPositionAndRotation(other.transform.position, other.transform.rotation);
+        }
+
+        if (other.CompareTag("Heart"))
+        {
+            audioSource.PlayOneShot(heartCollected, 1f);
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            audioSource.PlayOneShot(keyCollected, 1f);
         }
     }
 
